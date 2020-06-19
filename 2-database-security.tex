@@ -1,0 +1,160 @@
+\section{Database Security}
+
+\subsection{Database Architecture}
+A Database Management System (DBMS) is composed of several elements such as:
+\begin{itemize}
+    \item DB Management Functions
+          \begin{itemize}
+              \item User Management
+              \item DB Utilities (Administration and Maintenance)
+              \item External Query Applications
+          \end{itemize}
+    \item DB Languages (such as SQL and DDL)
+    \item Persistency and OLTP services
+          \begin{itemize}
+              \item Transaction Management \& Concurrency
+              \item File Management
+              \item Authorization Access Tables
+              \item Physical DB Mapping
+          \end{itemize}
+\end{itemize}
+
+\subsubsection{Relational DBMS}
+These are built upon now common elements such as:
+
+\begin{itemize}
+    \item Entity models and relations
+    \item Tables - and their elements such as rows and columns
+    \item Keys - primary and foreign keys
+    \item Views
+    \item SQL
+    \item User Defined Functions
+\end{itemize}
+
+\paragraph{SQL}
+Structure Query Language (SQL) is the language databases provide for query operations,
+each database provides its own "flavor" of SQL.
+
+\paragraph{SQL Injection Attacks}
+SQL injection attacks (SQLi) are one of the most common and dangerous threats,
+the intuition is to send a string which can be interpreted as an SQL command,
+they can be used to retrieve information, manipulate data or even launch a denial of service attack.
+When it comes to preventing SQLi attacks, there are several countermeasures available,
+such as:
+\begin{itemize}
+    \item Defensive Coding
+          \begin{itemize}
+              \item Data Sanitization and Validation
+              \item Static-Analysis (Application Wise)
+          \end{itemize}
+    \item Intrusion Detection
+          \begin{itemize}
+              \item Signature-based
+              \item Anomaly-based
+              \item Code analysis
+          \end{itemize}
+    \item Runtime Prevention
+          \begin{itemize}
+              \item Runtime filters with dynamic detection
+              \item Sensors in different nodes of routing SQL statements
+              \item Effects on DB state
+          \end{itemize}
+\end{itemize}
+
+\subsection{Access Control}
+Techniques used to grant and revoke authorizations.
+
+\subsubsection{Cascading Authorizations}
+Granting/revoking authorizations will cascade throughout the chain of permissions.
+That is, if a users authorization $A$ is revoked,
+authorizations given by means of $A$ will also be revoked.
+This mechanism can also be time based.
+
+\subsubsection{DAC vs. RBAC}
+\paragraph{Discretionary Access Control}
+Typically applies permissions in a "per-\texttt{userid}" base,
+or organize users according to categories such as the end users, application owners, DB admins, etc.
+
+\paragraph{Role-Based Access Control}
+The intuition behind RBAC is to extend the DAC model by defining more "fine-grain" roles.
+Allowing roles to be specific for role creation/deletion, permission assignment and more.
+This approach also allows to establish permissions between roles.
+
+\subsubsection{Typical Access Control Management Policies}
+Several common AC administration policies exist and work for different goals.
+
+\paragraph{Centralized}
+A small number of privileged users to grant and revoke rights.
+
+\paragraph{Ownership-based}
+The owner of a table may grant and revoke rights to the table.
+
+\paragraph{Decentralized}
+In addition to granting and revoking access rights to a table,
+the owner of the table may grant/revoke authorization rights to other users,
+allowing them to grant/revoke access rights to the table.
+
+\subsection{Inferential Threats}
+Inference can be considered to be indirect access to information.
+
+\paragraph{Inferential Attacks}
+Inferential attacks are usually performed by insider attackers,
+or by intruders who obtained valid privileges.
+An inference action is the process of performing authorized queries and deducing unauthorized information from legitimate responses from the server.
+
+\paragraph{Inference Vulnerability}
+An inference vulnerability exists when the combination of a number of data items is more sensitive that the individual items and their specific access authorization.
+
+\paragraph{Inferential Metadata}
+Inferential metadata refers to the knowledge of the DB structural model,
+as well as correlations or dependencies among data items.
+
+\paragraph{Inferential Channels}
+The inference channel is defined as the information transfer path by which unauthorized data is accessed by a sequence and combination of authorized data.
+
+\subsection{Database Encryption}
+Database encryption is the last line of defense against malicious actors.
+There exist several challenges related to DB encryption.
+
+\subsubsection{Key Management}
+Authorized users must access keys used to encrypt and decrypt the stored data.
+However it is also necessary to support a wide range of users and external applications.
+Furthermore it is necessary to manage several keys.
+
+\subsubsection{Operation Support}
+The database is required to support SQL as if it was not encrypted,
+this is not a simple problem as it conflicts with one of the main goals of cryptography,
+which is to make plain data imperceptible.
+
+\subsubsection{Scope of Encryption}
+DB encryption can be applied to many levels from the entire database to the field as a single unit.
+The finer the encryption, the more keys are required to manage.
+
+\subsubsection{DB Encryption Solution}
+Encrypted DB version (tables) built and released by the data owner entity as a set of rows,
+with contiguous binary blocks.
+
+\begin{equation*}
+    \begin{split}
+        B_i & = (X_{i1} \parallel X_{i2} \parallel \dots \parallel X_{iM}) \\
+        E(k, B_i) & = E(k, (X_{i1} \parallel X_{i2} \parallel \dots \parallel X_{iM}))
+    \end{split}
+\end{equation*}
+
+The client now must encrypt the data for retrieval.
+In the client front-end proxy indexes are associated with each table and for some or all of the attributes an index value is created.
+So we have that for each row of the unencrypted DB the mapping is:
+\begin{equation*}
+    (X_{i1}, X_{i2}, \dots, X_{iM}) \Rightarrow [E(k, B_i), I_{i1}, I_{i2}, \dots, I_{iM}]
+\end{equation*}
+
+\begin{equation*}
+    \begin{matrix}
+        E(k, B_1) & I_{11} & I_{12} & \dots  & I_{1M} \\
+        E(k, B_2) & I_{21} & I_{22} & \dots  & I_{1M} \\
+        \vdots    & \vdots & \vdots & \ddots & \vdots \\
+        E(k, B_N) & I_{N1} & I_{N2} & \dots  & I_{NM} \\
+    \end{matrix}
+\end{equation*}
+
+To create the indexes $I_{ij}$ we generate ranges over the attribute values (covering all possible values) without overlapping partitions.
