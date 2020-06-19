@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1592577425 "/home/jmgduarte/Documents/csd/exam/main.tex" "/home/jmgduarte/Documents/csd/exam/main.pdf" "main" 1592577426
+["pdflatex"] 1592584999 "/home/jmgduarte/Documents/csd/exam/main.tex" "/home/jmgduarte/Documents/csd/exam/main.pdf" "main" 1592584999
   "/etc/texmf/web2c/texmf.cnf" 1590573738 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jmgduarte/Documents/csd/exam/main.aux" 1592577426 5403 7f3ce7ede87b1d1eb22f8a888b316b53 ""
-  "/home/jmgduarte/Documents/csd/exam/main.tex" 1592577425 423 2da22d2da208455d3099c73689ca5c67 ""
+  "/home/jmgduarte/Documents/csd/exam/main.aux" 1592584999 6630 15a71f5e054a5c507a6b8697b1bd312f ""
+  "/home/jmgduarte/Documents/csd/exam/main.tex" 1592578175 446 3f74c658b77b29e8e71d5a89ce85b962 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -109,6 +109,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty" 1523134290 2432 8ff93b1137020e8f21930562a874ae66 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1580683321 20023 e427dd9e17e239bf926ef3aab67fe35e ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1580683321 8446 9874cccac5fee462272c582807dbbf56 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty" 1561238569 51697 f8f08183cd2080d9d18a41432d651dfb ""
   "/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty" 1578002852 41601 9cf6c5257b1bc7af01a58859749dd37a ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1459978653 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
@@ -140,12 +141,12 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1590573802 8256005 b34f70d964a1f4661bea2f4888b692f6 ""
   "1-blockchains.tex" 1592501550 9995 7939dc28276e57bb8db73915fbfee9f9 ""
   "2-database-security.tex" 1592565006 6667 447db2f5c352c238859a34d7040a3caa ""
-  "3-homomorphic-encryption.tex" 1592577147 734 9e1b56bc306c051a526d61efd59e43fa ""
-  "main.aux" 1592577426 5403 7f3ce7ede87b1d1eb22f8a888b316b53 "pdflatex"
-  "main.tex" 1592577425 423 2da22d2da208455d3099c73689ca5c67 ""
+  "3-database-crypto.tex" 1592584998 3437 80e0d4991766fe9e934b2e7fcb9cb17a ""
+  "main.aux" 1592584999 6630 15a71f5e054a5c507a6b8697b1bd312f "pdflatex"
+  "main.tex" 1592578175 446 3f74c658b77b29e8e71d5a89ce85b962 ""
   (generated)
-  "main.pdf"
-  "main.aux"
   "/home/jmgduarte/Documents/csd/exam/main.pdf"
+  "main.pdf"
   "main.log"
+  "main.aux"
   "/home/jmgduarte/Documents/csd/exam/main.log"

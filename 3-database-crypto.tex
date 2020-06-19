@@ -1,0 +1,68 @@
+\section{Database Cryptography}
+\subsection{Homomorphic Encryption}
+
+Homomorphic encryption is a form of encryption that allows operations over the encrypted results
+as if the operations were done on the original data.
+
+Homomorphic encryption can be categorized over three different methods.
+
+\subsubsection{Encryption Methods}
+
+\paragraph{Fully Homomorphic Encryption}
+It is considered to be the holy grail of cryptography and while it has been proven to be theoretically possible there has been no progress yet.
+FHE supports unlimited additions and multiplications.
+
+\paragraph{Partially Homomorphic Encryption}
+PHE supports only one method, either additions or multiplications.
+
+\paragraph{Somewhat Homomorphic Encryption}
+SWHE tries to bridge the gap between methods providing both in a limited manner.
+
+\subsubsection{Beyond HE Methods}
+While HE provides versatility to the processing of encrypted data it is not adequate for every purpose.
+Some factors are required to be considered such as.
+\begin{itemize}
+    \item The output is encrypted,
+    in contrast to other existing obfuscation and functional encryption techniques,
+    which retrieve the result as plaintext.
+    \item All inputs must be encrypted with the same key,
+    that is, the key that encrypts the original data is also required to encrypted the operation input.
+    \item HE does not provide authentication or integrity guarantees on computations,
+    the assumption is that the algorithms are correct and results are obtained by the correct execution.
+\end{itemize}
+
+\subsection{CryptDB}
+CryptDB tries to address information leakage by encrypting the DB content.
+It provides practical confidentiality and encrypted query processing.
+
+\subsubsection{Adversary Model}
+\paragraph{Honest-but-Curious Admin}
+The attacker may be the DB admin trying to extract information over client documents.
+This actor is considered to have full control over the DBMS, even access to RAM.
+CryptDB aims to provide confidentiality, the attacker is assumed to be passive,
+only trying to extract information, not modifying information.
+
+\paragraph{Leaked Keys}
+The adversary may have gotten access to the keys used to encrypt the entire data base.
+An adversary of who compromises the application server or the proxy can only decrypt data of currently logged-in users.
+The countermeasure CryptDB provides is not letting the inactive user keys to be available to the attacker.
+
+\subsubsection{Proposed Techniques}
+\paragraph{Using PHE}
+This provides a set of primitive operators such as equality checks, order comparisons and aggregations.
+It also provides a new construction for joins.
+
+\paragraph{Adjustable Query-Based Encryption}
+Use onion encryption, that is, encrypt using several methods one after the other.
+
+\paragraph{Chain-Encryption Keys}
+Onion encryption chains, based on the password of one of the users with data access authorization.
+Guarantee that data is inaccessible if authorized users are not logged in.
+Capture application based-access control requirements and support data-sharing by a delegation model.
+
+\subsection{Cipherbase}
+Cipherbase was introduced by Microsoft,
+it is a full-fledged SQL database providing high performance and high data confidentiality.
+It support stored procedures, indexes, recovery procedures as well as full SQL,
+column-level encryption and other encryption schemes.
+Cipherbase makes use of special hardware for encryption processes.

@@ -17,6 +17,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
@@ -192,8 +194,8 @@ OUTPUT /home/jmgduarte/Documents/csd/exam/main.pdf
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /home/jmgduarte/Documents/csd/exam/2-database-security.tex
 INPUT /home/jmgduarte/Documents/csd/exam/2-database-security.tex
-INPUT /home/jmgduarte/Documents/csd/exam/3-homomorphic-encryption.tex
-INPUT /home/jmgduarte/Documents/csd/exam/3-homomorphic-encryption.tex
+INPUT /home/jmgduarte/Documents/csd/exam/3-database-crypto.tex
+INPUT /home/jmgduarte/Documents/csd/exam/3-database-crypto.tex
 INPUT /home/jmgduarte/Documents/csd/exam/main.aux
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
