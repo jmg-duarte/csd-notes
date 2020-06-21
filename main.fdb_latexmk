@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1592739524 "/home/jmgduarte/Documents/csd/exam/main.tex" "/home/jmgduarte/Documents/csd/exam/main.pdf" "main" 1592739524
+["pdflatex"] 1592752398 "/home/jmgduarte/Documents/csd/exam/main.tex" "/home/jmgduarte/Documents/csd/exam/main.pdf" "main" 1592752398
   "/etc/texmf/web2c/texmf.cnf" 1590573738 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/jmgduarte/Documents/csd/exam/main.aux" 1592739524 10845 4d7e2a87420efec8d6a18bd6620f41d3 ""
+  "/home/jmgduarte/Documents/csd/exam/main.aux" 1592752398 11963 467735ee96c3927971643de7f30de03d ""
   "/home/jmgduarte/Documents/csd/exam/main.tex" 1592734944 482 1f6b0cdab13fbc5ab49c863eead7f7ec ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -169,14 +169,14 @@
   "1-blockchains.tex" 1592501550 9995 7939dc28276e57bb8db73915fbfee9f9 ""
   "2-database-security.tex" 1592565006 6667 447db2f5c352c238859a34d7040a3caa ""
   "3-database-crypto.tex" 1592584998 3437 80e0d4991766fe9e934b2e7fcb9cb17a ""
-  "4-tpm.tex" 1592739523 5890 c558a3eac8249600cb4adead3a119b4c ""
-  "main.aux" 1592739524 10845 4d7e2a87420efec8d6a18bd6620f41d3 "pdflatex"
-  "main.out" 1592739524 3030 18ca9f37dfec0c7ec84d092d3a8600fb "pdflatex"
+  "4-tpm.tex" 1592752397 9623 3fb3296b11c899e949811e7ba5471a02 ""
+  "main.aux" 1592752398 11963 467735ee96c3927971643de7f30de03d "pdflatex"
+  "main.out" 1592752398 3478 c23184e56684b680e3537d81c8ad60ca "pdflatex"
   "main.tex" 1592734944 482 1f6b0cdab13fbc5ab49c863eead7f7ec ""
   (generated)
-  "main.pdf"
   "/home/jmgduarte/Documents/csd/exam/main.pdf"
+  "main.aux"
+  "main.log"
   "main.out"
   "/home/jmgduarte/Documents/csd/exam/main.log"
-  "main.log"
-  "main.aux"
+  "main.pdf"

@@ -27,6 +27,20 @@ Remote attestation is the ability of a system to make reliable statements about 
 A Trusted Platform Module (TPM) is hardware designed according to the ISO/IEC 11889 standard.
 It is a chip built into a dedicated microcontroller which can be used as a secure cryptographic processor.
 
+\subsubsection{Limitations}
+\begin{itemize}
+    \item Cross-device data sharing/communication. No secure key exchange protocols as a bootstrapping process for secure interactions, no protected X509 authentication and management, no relevant cryptography.
+    \item Trusted clocks, time-based attacks.
+    TPMs combine a trusted timer with a secure, non volatile counter,
+    for every tick received the counter is increased,
+    every $n$ increments the value is stored in NV storage.
+    \item No monotonicity. The TPM is not able to keep track of time when not running.
+    Whenever the system is booted, the value in the NV memory is picked up, violating monotonicity.
+    \item NV Constraints. The NVRAM is small ($1\sim1.5$KB size).
+    \item Cryptographic limitations.
+    \item Performance issues. The chips are slow.
+\end{itemize}
+
 \subsubsection{Issues}
 The has been some resistance and criticism over the generalized adoption of TPMs such as:
 \begin{itemize}
@@ -102,3 +116,59 @@ Runs program code to dispatch the received commands.
 Used to store TPM parameters in a persistent manner.
 \paragraph{Volatile Memory}
 Temporary storage for the execution engine, as well as for volatile parameters.
+
+\subsection{Trustworthy Computing}
+Trustworthy Computing is about systems that will not compromise security,
+in contrast to TC in which we can just expect the system to be safe.
+\paragraph{System Integrity Guarantees}
+Hardware verification and software components verification, such as what the components are and what data can they access.
+\paragraph{Data Security Environment}
+Authentication of the machine unique identity, crypto keys stored in sealed storage and all critical data.
+\paragraph{Privacy Protection}
+Prevention of unauthorized access from the network, user control policy improvements and domain separation for data leakage avoidance.
+
+\subsection{Trusted Execution Environment}
+Trusted Execution Environment (TEE) provide isolated execution with memory isolation and runtime integrity guarantees.
+They also provide secure I/O, secure storage,
+more flexibility since they act as TPMs but directed to the application-level.
+Furthermore they provide virtualization security, measurement, attestation and sealing.
+
+\subsubsection{Hardware-Backed TEEs}
+The main idea behind it is to make use of the secure area of a processor to support the TEE.
+It guarantees that code and data loaded inside to be protected with respect to confidentiality and integrity.
+The TEE provides security features such as:
+\begin{itemize}
+    \item Isolated Execution.
+    \item Integrity of Trusted Applications along with confidentiality of their assets.
+\end{itemize}
+
+\subsection{Intel SGX}
+Intel SGX is a technology developed by Intel which provides secure computation features, such as memory isolation through enclaves.
+Protection from software attacks is provided by enclaves, which works was follows.
+\begin{enumerate}
+    \item App is build with trusted and untrusted parts.
+    \item App runs and creates an enclave which is placed in trusted memory.
+    \item Trusted function is called,
+    code running inside the enclave sees data in clear and
+    external access to the data is denied.
+    \item The function returns and the enclave data remains in trusted memory.
+\end{enumerate}
+
+An enclave:
+\begin{itemize}
+    \item Has its own code and data.
+    \item Provides confidentiality and integrity.
+    \item Has controlled entry points.
+    \item Supports multiple threads and has full access to the application memory.
+\end{itemize}
+
+\subsubsection{SW Attestation with Enclaves}
+\begin{enumerate}
+    \item The enclave is built and measured.
+    \item The enclave requests \texttt{REPORT} (an hardware signed blob that includes the enclave identity information).
+    \item The signed request \texttt{REPORT} is sent to the server.
+    \item \texttt{REPORT} is verified.
+    \item The application key is sent to the enclave.
+    \item Enclave-Platform Specific Sealing Key is generated.
+    \item Application key encrypted using the Sealing Key and stored for later use.
+\end{enumerate}
