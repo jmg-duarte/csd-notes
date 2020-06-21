@@ -1,0 +1,104 @@
+\section{Trusted Computing}
+
+Trusted Computing (TC) is the notion of embedding security into the hardware,
+making it readily available on commodity devices.
+The notion originated in the Trusted Computing Group\footnote{\url{https://trustedcomputinggroup.org}}.
+The original goal of TC was the development of Trusted Platform Modules (hardware/firmware)
+and more recently Trusted Network Connect (TNC) a protocol specification for secure network connections
+with authentication, authorization and accountability.
+
+Some general features present in TC are:
+\begin{itemize}
+    \item \textbf{Secure Boot} - which allows the system to boot into a defined and trusted configuration.
+    \item \textbf{Curtained Memory} - provides strong memory isolation (i.e. memory that cannot be read by other processes).
+    \item \textbf{Sealed Storage} - Allows software to keep cryptographically secure secrets.
+    \item \textbf{Secure I/O} - Thwarts attacks like keyloggers and screen scrapers.
+    \item \textbf{Integrity Measurements} - Ability to compute hashes of executable code,
+    configuration data, and other system state information.
+    \item \textbf{Remote Attestation} - Allows a trusted device to present reliable evidence to remote parties of the about the running software.
+\end{itemize}
+
+\paragraph{Software Attestation}
+Software attestation can be divided into local and remote attestation.
+Local attestation is the ability of a program to authenticate itself.
+Remote attestation is the ability of a system to make reliable statements about the software it is running in another system.
+
+\subsection{Trusted Platform Module}
+A Trusted Platform Module (TPM) is hardware designed according to the ISO/IEC 11889 standard.
+It is a chip built into a dedicated microcontroller which can be used as a secure cryptographic processor.
+
+\subsubsection{Issues}
+The has been some resistance and criticism over the generalized adoption of TPMs such as:
+\begin{itemize}
+    \item Rise of privacy concerns.
+    \item Physical/Administrative access to hardware bases.
+    \item The private endorsement key is fundamental to the security of the TPM circuit,
+    this key is never made available to the end-user, requiring users to trust the manufacturer.
+    \item Rigidity and lack of relevant trusted functions for specific deployments.
+    \item The performance of TPMs is lackluster.
+    Vendors have little incentive to use faster (and more expensive) parts.
+\end{itemize}
+
+\subsubsection{Services}
+TPMs provide three basic services, authenticated boot, attestation and encryption facilities.
+
+\paragraph{Authentication}
+Provides mean to unequivocally identify the TPM module and platform.
+Each TPM has a embedded key pair, the \textit{Endorsement Key}.
+This key is signed by the manufacturer as to guarantee the correctness the chip and validity of the key.
+
+\paragraph{Trusted Boot}
+The function responsible for booting the OS in stages,
+ensuring that each portion of the OS is trusted and approved for use.
+A TC-enabled system using TPM devices maintains a list of appropriate HW and SW components for verification of the boot process.
+
+\paragraph{Authenticated Boot}
+Responsible for booting the entire OS in successive stages,
+assuming that each portion of the OS loaded is a version that is approved for use.
+At each stage the digital signature associated with the software is verified and loaded and
+the tamper evidence log of the entire boot process is registered to detect any tampering with the log.
+
+\paragraph{Platform Configuration Registers}
+PCRs are special registers which are primarily used to store fingerprints of a portion of the software booting on a computer,
+they are guaranteed to be reset upon a computer boot.
+
+\paragraph{Extended Authenticated Configurations}
+From the base functions it is possible to expand the trust-boundary to include new hardware devices,
+software utilities, stack layers or applications.
+
+\paragraph{Certification Service}
+Once a configuration is achieved and logged the TPM can certify the configuration to others, producing a digital certificate.
+There is confidence that the configuration is unaltered because the TPM is considered to be trustworthy and only the TPM possesses the TPM private key.
+
+\paragraph{Remote Attestation Protocol}
+Aims to provide a remote entity with means to assess the security if the contacted platform.
+Allows to retrieve from the TPM a signature called \textit{quote} that tells the resulting platform configuration,
+built through the attested platform boot, by the loaded firmware and software.
+
+\paragraph{Encryption Service}
+The TPM keeps a secret master key, unique to the machine.
+\begin{itemize}
+    \item \textbf{Binding Encryption} encrypts data using the TPM binding key.
+    \item \textbf{Sealing Encryption} encrypts data so that it can only be decrypted by a machine with a certain verified configuration.
+\end{itemize}
+
+\subsubsection{Functions}
+\paragraph{I/O}
+All commands enter/exit through the I/O bus, it is the only way to communicate with the TPM functions.
+\paragraph{Cryptography Co-Processor}
+Processor for encryption functions, it provides utilities such as hashing, RSA encryption and digital signatures
+as well as AES encryption.
+\paragraph{Key Generation}
+Able to create RSA keypairs and generate AES symmetric keys.
+\paragraph{HMAC \& SHA-1 Engines}
+Provides hardware HMAC and SHA-1 implementations.
+\paragraph{Random Number Generator}
+Useful for key-generation, nonces and generally as a source of randomness.
+\paragraph{Power Detection}
+Manages the TPM power state in conjunction with the platform power state.
+\paragraph{Execution Engine}
+Runs program code to dispatch the received commands.
+\paragraph{Non-Volatile Memory}
+Used to store TPM parameters in a persistent manner.
+\paragraph{Volatile Memory}
+Temporary storage for the execution engine, as well as for volatile parameters.
